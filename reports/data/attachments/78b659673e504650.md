@@ -1,0 +1,222 @@
+# Instructions
+
+- Following Playwright test failed.
+- Explain why, be concise, respect Playwright best practices.
+- Provide a snippet of code with the fix, if possible.
+
+# Test info
+
+- Name: Registration.spec.js >> New user registration >> create new user using POM Sanju
+- Location: tests\Registration.spec.js:12:9
+
+# Error details
+
+```
+Test timeout of 30000ms exceeded.
+```
+
+```
+Error: locator.click: Test timeout of 30000ms exceeded.
+Call log:
+  - waiting for getByText('JavaScript', { exact: true })
+
+```
+
+# Page snapshot
+
+```yaml
+- generic [ref=e3]:
+  - navigation [ref=e4]:
+    - generic [ref=e5]:
+      - generic [ref=e6] [cursor=pointer]:
+        - img "logo" [ref=e7]
+        - heading "Learn Automation Courses" [level=1] [ref=e8]
+      - generic [ref=e9]:
+        - img "menu" [ref=e10] [cursor=pointer]
+        - generic [ref=e11]:
+          - generic [ref=e12]:
+            - text: Learn Automation Courses
+            - img "delete" [ref=e13] [cursor=pointer]
+          - generic [ref=e14]:
+            - link "Home" [ref=e15] [cursor=pointer]:
+              - /url: /
+              - generic [ref=e16]: Home
+            - link "Practise" [ref=e17] [cursor=pointer]:
+              - /url: /practise
+              - generic [ref=e18]: Practise
+            - button "Log in" [ref=e19] [cursor=pointer]
+  - generic [ref=e21]:
+    - generic [ref=e24]:
+      - heading "Sign Up" [level=2] [ref=e25]
+      - textbox "Name" [ref=e26]: Sanju
+      - textbox "Email" [ref=e27]: sanju.csk_1778348643172@email.com
+      - textbox "Password must be atleast 6 characters" [active] [ref=e28]:
+        - /placeholder: Password
+        - text: TestPass@789
+      - heading "Interests" [level=4] [ref=e29]
+      - generic [ref=e30]:
+        - generic [ref=e31]:
+          - checkbox "PHP" [ref=e33]
+          - generic [ref=e34]: PHP
+        - generic [ref=e35]:
+          - checkbox "MySQL" [ref=e37]
+          - generic [ref=e38]: MySQL
+        - generic [ref=e39]:
+          - checkbox "test" [ref=e41]
+          - generic [ref=e42]: test
+        - generic [ref=e43]:
+          - checkbox "Playwright" [ref=e45]
+          - generic [ref=e46]: Playwright
+        - generic [ref=e47]:
+          - checkbox "Selenium" [ref=e49]
+          - generic [ref=e50]: Selenium
+        - generic [ref=e51]:
+          - checkbox "Playwright-1778275826527" [ref=e53]
+          - generic [ref=e54]: Playwright-1778275826527
+        - generic [ref=e55]:
+          - checkbox "Playwright-1778276091344" [ref=e57]
+          - generic [ref=e58]: Playwright-1778276091344
+        - generic [ref=e59]:
+          - checkbox "JMeter" [ref=e61]
+          - generic [ref=e62]: JMeter
+      - heading "Gender" [level=4] [ref=e63]
+      - generic [ref=e64]:
+        - generic [ref=e65]:
+          - radio [checked] [ref=e66]
+          - generic [ref=e67]: Male
+        - generic [ref=e68]:
+          - radio [ref=e69]
+          - generic [ref=e70]: Female
+      - generic [ref=e71]:
+        - heading "State:" [level=4] [ref=e72]
+        - combobox [ref=e73]:
+          - option "Andhra Pradesh"
+          - option "Arunachal Pradesh"
+          - option "Assam"
+          - option "Bihar"
+          - option "Chhattisgarh"
+          - option "Goa"
+          - option "Gujarat"
+          - option "Haryana"
+          - option "Himachal Pradesh"
+          - option "Jammu and Kashmir"
+          - option "Jharkhand"
+          - option "Karnataka"
+          - option "Kerala"
+          - option "Madhya Pradesh"
+          - option "Maharashtra"
+          - option "Manipur"
+          - option "Meghalaya"
+          - option "Mizoram"
+          - option "Nagaland"
+          - option "Odisha"
+          - option "Punjab"
+          - option "Rajasthan"
+          - option "Sikkim"
+          - option "Tamil Nadu"
+          - option "Telangana"
+          - option "Tripura"
+          - option "Uttarakhand"
+          - option "Uttar Pradesh"
+          - option "West Bengal"
+          - option "Andaman and Nicobar Islands"
+          - option "Chandigarh"
+          - option "Dadra and Nagar Haveli"
+          - option "Daman and Diu"
+          - option "Delhi"
+          - option "Lakshadweep"
+          - option "Puducherry"
+      - generic [ref=e74]:
+        - heading "Hobbies:" [level=4] [ref=e75]
+        - listbox [ref=e76]:
+          - option "Playing" [ref=e77]
+          - option "Reading" [ref=e78]
+          - option "Swimming" [ref=e79]
+          - option "Singing" [ref=e80]
+          - option "Dancing" [ref=e81]
+      - button "Sign up" [disabled] [ref=e82]
+      - link "Already a user? Login" [ref=e83] [cursor=pointer]:
+        - /url: /login
+    - img "Login" [ref=e85]
+  - generic [ref=e87]:
+    - generic [ref=e88]:
+      - heading "Learn Automation By Mukesh Otwani" [level=3] [ref=e89]
+      - heading "©2023 All rights reserved" [level=2] [ref=e90]
+    - generic [ref=e91] [cursor=pointer]:
+      - link [ref=e92]:
+        - /url: https://youtube.com/MukeshOtwani
+        - img [ref=e93]
+      - link [ref=e96]:
+        - /url: https://twitter.com/MukeshOtwani
+        - img [ref=e97]
+      - link [ref=e99]:
+        - /url: https://www.linkedin.com/in/mukesh-otwani-93631b99/
+        - img [ref=e100]
+      - link [ref=e102]:
+        - /url: https://www.facebook.com/groups/256655817858291
+        - img [ref=e103]
+```
+
+# Test source
+
+```ts
+  1  | import { BasePage } from "./Basepage.js"
+  2  | 
+  3  | export class RegistrationPage extends BasePage{
+  4  | 
+  5  | 
+  6  |     constructor(page)
+  7  |     {
+  8  |         super(page)
+  9  |         this.newURLLink=this.page.getByText("New user? Signup")
+  10 |         this.name=this.page.getByPlaceholder("Name")
+  11 |         this.email=this.page.getByPlaceholder("Email")
+  12 |         this.password=this.page.getByPlaceholder("Password")
+  13 |         this.interest=this.page.getByText("JavaScript",{exact:true})
+  14 |         this.gender=this.page.locator("//input[@value='Male']")
+  15 |         this.state=this.page.locator("#state")
+  16 |         this.hobbies=this.page.locator("#hobbies")
+  17 |         this.signInButton=this.page.locator(".submit-btn")
+  18 |         
+  19 |     }
+  20 | 
+  21 |     async clickOnNewUser(){
+  22 |         await this.newURLLink.click();
+  23 |     }
+  24 | 
+  25 |     async enterName(name){
+  26 |         await this.name.fill(name);
+  27 |     }
+  28 |     
+  29 |     async enterEmail(email){
+  30 |         await this.email.fill(email);
+  31 |     }
+  32 | 
+  33 |     async enterPassword(password){
+  34 |         await this.password.fill(password);
+  35 |     }
+  36 | 
+  37 |     async selectInterest(){
+> 38 |         await this.interest.click();
+     |                             ^ Error: locator.click: Test timeout of 30000ms exceeded.
+  39 |     }
+  40 | 
+  41 |     async selectGender(){
+  42 |         await this.gender.click();
+  43 |     }
+  44 | 
+  45 |     async selectState(state){
+  46 |         await this.state.selectOption({value:state});
+  47 |     }
+  48 | 
+  49 |     async enterHobbies(hobbies){
+  50 |         await this.hobbies.selectOption(hobbies);
+  51 |     }
+  52 | 
+  53 |     async clickSignIn(){
+  54 |         await this.signInButton.click();
+  55 |     }
+  56 | 
+  57 |     
+  58 | }
+```

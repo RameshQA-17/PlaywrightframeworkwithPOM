@@ -1,0 +1,24 @@
+import{test,expect} from "@playwright/test"
+import { Loginpage } from "../Pages/Loginpage.js"
+import { randomEmail } from "../utils/Helper.js"
+
+
+test("login",async function({page})
+{  
+  const loginpage=new Loginpage(page) //page refernce
+
+  loginpage.goto("https://freelance-learn-automation.vercel.app/login")
+
+  //const email_id=randomEmail("ramesh")
+
+  await loginpage.enteremail("admin@email.com")
+
+  await loginpage.enterpassword("admin@123")
+
+  await loginpage.clickonLoginButton()
+
+  //await loginpage.assertUrlNotContains(/login/)
+  
+  //await expect.not.toHaveURL(/login/)
+
+})  

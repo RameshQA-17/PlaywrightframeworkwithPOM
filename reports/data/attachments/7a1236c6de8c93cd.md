@@ -1,0 +1,163 @@
+# Instructions
+
+- Following Playwright test failed.
+- Explain why, be concise, respect Playwright best practices.
+- Provide a snippet of code with the fix, if possible.
+
+# Test info
+
+- Name: Registration.spec.js >> New user registration >> create new user using POM Sanju
+- Location: tests\Registration.spec.js:12:9
+
+# Error details
+
+```
+Test timeout of 30000ms exceeded.
+```
+
+```
+Error: locator.click: Test timeout of 30000ms exceeded.
+Call log:
+  - waiting for getByText('New user? Signup')
+    - locator resolved to <a href="/signup" class="subLink">New user? Signup</a>
+  - attempting click action
+    - waiting for element to be visible, enabled and stable
+    - element is visible, enabled and stable
+    - scrolling into view if needed
+    - done scrolling
+    - performing click action
+
+```
+
+# Page snapshot
+
+```yaml
+- generic [ref=e3]:
+  - navigation [ref=e4]:
+    - generic [ref=e5]:
+      - generic [ref=e6] [cursor=pointer]:
+        - img "logo" [ref=e7]
+        - heading "Learn Automation Courses" [level=1] [ref=e8]
+      - generic [ref=e9]:
+        - img "menu" [ref=e10] [cursor=pointer]
+        - generic [ref=e11]:
+          - generic [ref=e12]:
+            - text: Learn Automation Courses
+            - img "delete" [ref=e13] [cursor=pointer]
+          - generic [ref=e14]:
+            - link "Home" [ref=e15] [cursor=pointer]:
+              - /url: /
+              - generic [ref=e16]: Home
+            - link "Practise" [ref=e17] [cursor=pointer]:
+              - /url: /practise
+              - generic [ref=e18]: Practise
+  - generic [ref=e20]:
+    - img "Login" [ref=e22]
+    - generic [ref=e23]:
+      - generic [ref=e25]:
+        - heading "Sign In" [level=2] [ref=e26]
+        - textbox "Enter Email" [ref=e27]
+        - textbox "Enter Password" [ref=e28]
+        - button "Sign in" [ref=e29] [cursor=pointer]
+        - link "New user? Signup" [active] [ref=e30] [cursor=pointer]:
+          - /url: /signup
+      - generic [ref=e31]:
+        - heading "Connect with us" [level=2] [ref=e32]
+        - generic [ref=e33] [cursor=pointer]:
+          - link [ref=e34]:
+            - /url: https://youtube.com/MukeshOtwani
+            - img [ref=e35]
+          - link [ref=e38]:
+            - /url: https://twitter.com/MukeshOtwani
+            - img [ref=e39]
+          - link [ref=e41]:
+            - /url: https://www.linkedin.com/in/mukesh-otwani-93631b99/
+            - img [ref=e42]
+          - link [ref=e44]:
+            - /url: https://www.facebook.com/groups/256655817858291
+            - img [ref=e45]
+          - link [ref=e47]:
+            - /url: https://learn-automation/reddit
+            - img [ref=e48]
+  - generic [ref=e62]:
+    - generic [ref=e63]:
+      - heading "Learn Automation By Mukesh Otwani" [level=3] [ref=e64]
+      - heading "©2023 All rights reserved" [level=2] [ref=e65]
+    - generic [ref=e66] [cursor=pointer]:
+      - link [ref=e67]:
+        - /url: https://youtube.com/MukeshOtwani
+        - img [ref=e68]
+      - link [ref=e71]:
+        - /url: https://twitter.com/MukeshOtwani
+        - img [ref=e72]
+      - link [ref=e74]:
+        - /url: https://www.linkedin.com/in/mukesh-otwani-93631b99/
+        - img [ref=e75]
+      - link [ref=e77]:
+        - /url: https://www.facebook.com/groups/256655817858291
+        - img [ref=e78]
+```
+
+# Test source
+
+```ts
+  1  | import { BasePage } from "./Basepage.js"
+  2  | 
+  3  | export class RegistrationPage extends BasePage{
+  4  | 
+  5  | 
+  6  |     constructor(page)
+  7  |     {
+  8  |         super(page)
+  9  |         this.newURLLink=this.page.getByText("New user? Signup")
+  10 |         this.name=this.page.getByPlaceholder("Name")
+  11 |         this.email=this.page.getByPlaceholder("Email")
+  12 |         this.password=this.page.getByPlaceholder("Password")
+  13 |         this.interest=this.page.getByText("JavaScript",{exact:true})
+  14 |         this.gender=this.page.locator("//input[@value='Male']")
+  15 |         this.state=this.page.locator("#state")
+  16 |         this.hobbies=this.page.locator("#hobbies")
+  17 |         this.signInButton=this.page.locator(".submit-btn")
+  18 |         
+  19 |     }
+  20 | 
+  21 |     async clickOnNewUser(){
+> 22 |         await this.newURLLink.click();
+     |                               ^ Error: locator.click: Test timeout of 30000ms exceeded.
+  23 |     }
+  24 | 
+  25 |     async enterName(name){
+  26 |         await this.name.fill(name);
+  27 |     }
+  28 |     
+  29 |     async enterEmail(email){
+  30 |         await this.email.fill(email);
+  31 |     }
+  32 | 
+  33 |     async enterPassword(password){
+  34 |         await this.password.fill(password);
+  35 |     }
+  36 | 
+  37 |     async selectInterest(){
+  38 |         await this.interest.click();
+  39 |     }
+  40 | 
+  41 |     async selectGender(){
+  42 |         await this.gender.click();
+  43 |     }
+  44 | 
+  45 |     async selectState(state){
+  46 |         await this.state.selectOption({value:state});
+  47 |     }
+  48 | 
+  49 |     async enterHobbies(hobbies){
+  50 |         await this.hobbies.selectOption(hobbies);
+  51 |     }
+  52 | 
+  53 |     async clickSignIn(){
+  54 |         await this.signInButton.click();
+  55 |     }
+  56 | 
+  57 |     
+  58 | }
+```

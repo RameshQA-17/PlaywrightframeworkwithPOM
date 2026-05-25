@@ -1,0 +1,30 @@
+[
+    {
+        "name": "Virat",
+        "email": "virat.rcb",
+        "password": "Password@123",
+        "state": "Delhi",
+        "hobbies": ["Playing", "Reading"]
+    },
+    {
+        "name": "Rahul",
+        "email": "Rahul.dc",
+        "password": "SecurePass@456",
+        "state": "Goa",
+        "hobbies": ["Swimming", "Reading"]
+    },
+    {
+        "name": "Sanju",
+        "email": "sanju.csk",
+        "password": "TestPass@789",
+        "state": "Punjab",
+        "hobbies": ["Playing", "Swimming"]
+    },
+    {
+        "name": "Rohit",
+        "email": "Rohit.MI",
+        "password": "MyPassword@101",
+        "state": "Karnataka",
+        "hobbies": ["Reading", "Playing", "Swimming"]
+    }
+]
